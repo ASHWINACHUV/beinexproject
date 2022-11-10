@@ -1,0 +1,89 @@
+<div  id="bodydiv" #uiElement>
+  <div id="feedbody"  >
+    <section>
+      <div class="row" style="background-color:#fbf9fa ;min-height: 8vh;    border-bottom: 2px solid #edecec;">
+        <div style="">
+         <img src="assets/logo.png" style="width: 20px ;height:20px;margin-top:3px;margin-left: 3px;">   Instagram
+         
+        </div>
+        
+      </div>
+      <ng-container 
+      *ngFor="let feed of Feeds" >
+      <div class="header">
+        <div class="user">{{feed?.author}}</div>
+        <div class="param">
+          <svg aria-label="Plus d’options" class="_8-yf5 " fill="#262626" height="16" role="img" viewBox="0 0 48 48" width="16">
+            <circle clip-rule="evenodd" cx="8" cy="24" fill-rule="evenodd" r="4.5"></circle>
+            <circle clip-rule="evenodd" cx="24" cy="24" fill-rule="evenodd" r="4.5"></circle>
+            <circle clip-rule="evenodd" cx="40" cy="24" fill-rule="evenodd" r="4.5"></circle>
+          </svg>
+        </div>
+      </div>
+      <div class="img-container">
+        <swiper [config]="config">
+          <div class="swiper-wrapper">
+            <img class="swiper-slide" *ngFor="let img of Images" [src]="img.src" [alt]="img.alt" />
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </swiper>
+      </div>
+      <div class="toolbar">
+        <a class="like" (click)="feed.like = !feed.like">
+          <svg  [style.color]="(feed.like)?'red':'white'"  [style.stroke-width]="(feed.like)?'0':'0.75'"   [style.stroke]="(feed.like)?'red':'black'"   
+        width="25" height="25" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" ></path>
+          </svg>
+        </a>
+        <a class="comment">
+          <svg fill="#262626" height="24" role="img" viewBox="0 0 48 48" width="24">
+          <path clip-rule="evenodd" d="M47.5 46.1l-2.8-11c1.8-3.3 2.8-7.1 2.8-11.1C47.5 11 37 .5 24 .5S.5 11 .5 24 11 47.5 24 47.5c4 0 7.8-1 11.1-2.8l11 2.8c.8.2 1.6-.6 1.4-1.4zm-3-22.1c0 4-1 7-2.6 10-.2.4-.3.9-.2 1.4l2.1 8.4-8.3-2.1c-.5-.1-1-.1-1.4.2-1.8 1-5.2 2.6-10 2.6-11.4 0-20.6-9.2-20.6-20.5S12.7 3.5 24 3.5 44.5 12.7 44.5 24z" fill-rule="evenodd"></path>
+        </svg>
+        </a>
+        <a class="transfer">
+          <svg fill="#262626" height="24" viewBox="0 0 48 48" width="24">
+          <path d="M47.8 3.8c-.3-.5-.8-.8-1.3-.8h-45C.9 3.1.3 3.5.1 4S0 5.2.4 5.7l15.9 15.6 5.5 22.6c.1.6.6 1 1.2 1.1h.2c.5 0 1-.3 1.3-.7l23.2-39c.4-.4.4-1 .1-1.5zM5.2 6.1h35.5L18 18.7 5.2 6.1zm18.7 33.6l-4.4-18.4L42.4 8.6 23.9 39.7z"></path>
+        </svg>
+        </a>
+        <a class="signet">
+          <svg fill="#262626" height="24" viewBox="0 0 48 48" width="24">
+            <path d="M43.5 48c-.4 0-.8-.2-1.1-.4L24 29 5.6 47.6c-.4.4-1.1.6-1.6.3-.6-.2-1-.8-1-1.4v-45C3 .7 3.7 0 4.5 0h39c.8 0 1.5.7 1.5 1.5v45c0 .6-.4 1.2-.9 1.4-.2.1-.4.1-.6.1zM24 26c.8 0 1.6.3 2.2.9l15.8 16V3H6v39.9l15.8-16c.6-.6 1.4-.9 2.2-.9z"></path>
+          </svg>
+        </a>
+      </div>
+      <div class="description"  >
+        <span [ngClass]="(feed?.show)?'show':''" >
+          <strong>{{feed?.author}}&nbsp;&nbsp;</strong>
+          {{(feed.show)?feed?.description:(feed?.description | slice: 0:100)}}
+          
+        </span>
+       
+      </div>
+      <div *ngIf="feed?.description && feed?.description.length > 150" style="padding-left: 8px;">
+        <a  class="showmore" (click)="feed.show = !feed.show">{{(feed.show) ?'less':'...more'}}</a>
+      </div>
+      
+
+    </ng-container>
+         </section>
+        </div>
+</div>
+
+
+<!-- <div class="container-fluid">
+    <h3 class="mt-2 mb-1">List of Feeds | Lazy loading 
+      <span style="font-size: 12px;">
+          <strong>({{Feeds.length}} of {{feedcount}})</strong>
+      </span>
+    </h3>
+    <ul class="list-group mt-3" 
+     #uiElement style="overflow-y: auto;max-height:400px;"
+    (scroll)="onScrollLoadData()" >
+      <li class="list-group-item" *ngFor="let feed of Feeds">
+        <span ><strong>{{feed.email ? feed.email : 'No Email entered'}}</strong></span>
+        <span >{{feed.statusCode === 200 ? 'Login success' : 'Login Failed'}}</span>
+      </li>
+    </ul>
+  </div> -->

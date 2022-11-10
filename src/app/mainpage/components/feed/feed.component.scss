@@ -1,0 +1,175 @@
+// Fonts 
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+
+// Style
+@mixin space($margin: 0, $padding: 0, $border: 0){
+  margin: $margin;
+  padding: $padding;
+  border: $border;
+}
+
+*{
+  box-sizing: border-box;
+  transition: all .15s ease-in-out;
+}
+
+a{
+  cursor:pointer;
+}
+
+body{
+  background: #fafafa;
+  @include space(50px auto);
+  width: 60vw;
+  max-width: 95%;
+  font-family: 'Cabin', sans-serif;
+  section{
+    background: #ffffff;
+    position: relative;
+    border-radius: 2px;
+    @include space(10px 0, 0, 1px solid #dbdbdb);
+    .header{
+      display: flex;
+      justify-content: space-between;
+      .user{
+        @include space(5px, 7px);
+      }
+      .param{
+        cursor: pointer;
+        @include space(6px, 6px);
+        border-radius: 4px;
+        &:hover{
+          background: rgb(0 0 0 / 9%);
+        }
+      }
+    }
+    .img-container{
+      img{
+        width: 100%;
+      }
+    }
+    .like-checkbox{
+      display: none;
+    }
+    .toolbar{
+      display: flex;
+      flex-direction: row;
+      justify-content: left;
+      .like, .comment, .transfer, .signet{
+         @include space(8px, 0);
+      }
+      .signet{
+        position: absolute;
+        right: 0;
+      }
+    }
+    .description{
+      @include space(6px, 6px);
+      font-size: 16px;
+      strong{
+        font-weight: bold;
+        font-size: 15px;
+      }
+      height: 32px;
+      overflow: hidden;
+    }
+  }
+}
+
+.feedbody{
+  background: #fafafa;
+  @include space(50px auto);
+  width: 60vw;
+  max-width: 95%;
+  font-family: 'Cabin', sans-serif;
+ 
+}
+section{
+  background: #ffffff;
+  position: relative;
+  border-radius: 2px;
+  @include space(10px 0, 0, 1px solid #dbdbdb);
+  .header{
+    display: flex;
+    justify-content: space-between;
+    .user{
+      @include space(5px, 7px);
+    }
+    .param{
+      cursor: pointer;
+      @include space(6px, 6px);
+      border-radius: 4px;
+      &:hover{
+        background: rgb(0 0 0 / 9%);
+      }
+    }
+  }
+  .img-container{
+    img{
+      width: 100%;
+    }
+  }
+  .like-checkbox{
+    display: none;
+  }
+  .toolbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    .like, .comment, .transfer, .signet{
+       @include space(8px, 0);
+    }
+    .signet{
+      position: absolute;
+      right: 0;
+    }
+  }
+  .description{
+    @include space(6px, 6px);
+    font-size: 16px;
+    strong{
+      font-weight: bold;
+      font-size: 15px;
+    }
+    
+  }
+  .showmore {
+    font-size: small;
+    color: #464242ad;
+  }
+}
+// #bodydiv{
+//   height: 95vh;
+//   max-height: 95vh;
+//   min-height: 95vh;
+//   overflow:scroll;
+//   padding-right: 10px;
+// }
+.check-like{
+  animation-duration: 0.2s;
+  animation-name: like;
+  fill: #1F81BA;
+}
+.check-path{
+  fill: #1F81BA;
+  background: #1F81BA;
+}
+
+@keyframes like {
+  from{
+    transform: scale(1);
+  }
+  75%{
+    transform: scale(1.4);
+  }
+  to{
+    transform: scale(1);
+  }
+}
+.swiper-button-next,.swiper-button-prev{
+  // color: transparent;
+  font-size: 20px;
+}
+.swiper-button-prev:after, .swiper-button-next:after {
+  font-size: 20px;
+}
